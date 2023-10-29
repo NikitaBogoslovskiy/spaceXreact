@@ -1,3 +1,5 @@
+import {changeColor} from "./map";
+
 function LaunchList(props) {
 
     return (
@@ -8,7 +10,7 @@ function LaunchList(props) {
 
                 <ul>
                     {props.launches.map(launch => {
-                        return <li key={launch.id}>{launch.name}</li>
+                        return <li key={launch.id} onClick={() => changeColor(launch.launchpad)}>{launch.name}</li>
                     })}
                 </ul>
             </div>
