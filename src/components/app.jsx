@@ -1,10 +1,11 @@
 import {LaunchList} from "./launchList";
 import {Map} from "./map";
-import {useEffect, useState} from "react";
+import {useEffect, useState, useRef} from "react";
 import {SpaceX} from "../api/spacex";
 
 function App(){
 
+    const mainRef = useRef(null);
     const [launches, setLaunches] = useState([]);
     const [launchPads, setLaunchPads] = useState({
         "type":"FeatureCollection",
@@ -23,8 +24,8 @@ function App(){
     },[]);
 
     return(
-        <main className='main'>
-            <LaunchList launches = {launches}/>
+        <main className='main' ref={mainRef}>
+            <LaunchList launches = {launches} mainRef = {mainRef}/>
             <Map launchPads = {launchPads}/>
         </main>
     )
